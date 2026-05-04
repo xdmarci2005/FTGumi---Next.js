@@ -1,8 +1,47 @@
+import { useEffect, useState } from "react";
+import { supabase } from "@/lib/supabase";
 
+export default function Prices() {
+  const [specialPrices, setSpecialPrices] = useState<any[]>([]);
+  const [priceData, setPriceData] = useState<any[]>([]);
 
+  useEffect(() => {
+    const fetchPriceData = async () => {
+      const { data, error } = await supabase
+        .from("priceData")
+        .select("*")
+        .order("id", { ascending: true });
 
-export default function Prices(priceData: any, specialPrices: any) {
-    return (<div className="">
+      if (error) {
+        console.error("Error fetching price data:", error);
+      } else {
+        console.log("Fetched price data:", data);
+        setPriceData(data || []);
+      }
+    };
+    fetchPriceData();
+  }, []);
+
+  useEffect(() => {
+    const fetchSpecialPrices = async () => {
+      const { data, error } = await supabase
+        .from("specialPrices")
+        .select("*")
+        .order("id", { ascending: true });
+
+      if (error) {
+        console.error("Error fetching special prices:", error);
+      } else {
+        console.log("Fetched special prices:", data);
+        setSpecialPrices(data || []);
+      }
+    };
+
+    fetchSpecialPrices();
+  }, []);
+
+  return (
+    <div className="">
       <section id="araink" className="py-24 bg-[#161616]">
         <div className="max-w-[1500px] mx-auto px-4">
           <h2 className="font-[family-name:var(--font-montserrat)] text-center text-3xl md:text-4xl mb-16 uppercase">
@@ -54,7 +93,6 @@ export default function Prices(priceData: any, specialPrices: any) {
                     </span>
                     {row.priceFrom} - {row.priceTo} Ft
                   </div>
-                  
                 </div>
               ))}
             </div>
@@ -83,8 +121,12 @@ export default function Prices(priceData: any, specialPrices: any) {
                     <td className="p-4 text-[#f5f5f5] text-center">
                       {row.size}
                     </td>
-                    <td className="p-4 text-[#f5f5f5] text-center">{row.gumi} Ft</td>
-                    <td className="p-4 text-[#f5f5f5] text-center">{row.kplc} Ft</td>
+                    <td className="p-4 text-[#f5f5f5] text-center">
+                      {row.gumi} Ft
+                    </td>
+                    <td className="p-4 text-[#f5f5f5] text-center">
+                      {row.kplc} Ft
+                    </td>
                   </tr>
                 ))}
               </tbody>
@@ -109,7 +151,9 @@ export default function Prices(priceData: any, specialPrices: any) {
                     <td className="p-4 text-[#f5f5f5] text-center">
                       {row.name} ({row.ora_db ? "óra" : "db"})
                     </td>
-                    <td className="p-4 text-[#f5f5f5] text-center">{row.priceFrom} - {row.priceTo} Ft</td>
+                    <td className="p-4 text-[#f5f5f5] text-center">
+                      {row.priceFrom} - {row.priceTo} Ft
+                    </td>
                   </tr>
                 ))}
               </tbody>
@@ -121,7 +165,6 @@ export default function Prices(priceData: any, specialPrices: any) {
           </p>
         </div>
       </section>
-
     </div>
-    )
+  );
 }

@@ -135,7 +135,7 @@ export default function Connections() {
             <div className="w-full h-full min-h-[250px] bg-[#121212] rounded flex items-center justify-center text-[#a0a0a0]">
               {/* Ide mehet az élő Google Maps iframe, pl.: */}
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2697.587216634351!2d19.04632307684074!3d47.44976297117462!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4741ddb43525287f%3A0xc3c9f285fb70a1a4!2sBudapest%2C%20Kondorosi%20%C3%BAt%202%2Fa%2C%201116!5e0!3m2!1shu!2shu!4v1714400000000!5m2!1shu!2shu"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2698.0639062770733!2d19.048827699999997!3d47.4496937!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4741dd77ea9914d7%3A0x7ac4f734f1b708e9!2sGumiszerviz!5e0!3m2!1shu!2shu!4v1777916496633!5m2!1shu!2shu"
                 className="w-full h-full border-0 rounded"
                 allowFullScreen={false}
                 loading="lazy"
