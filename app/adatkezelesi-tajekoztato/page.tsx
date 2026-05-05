@@ -13,7 +13,7 @@ export default function Adatkezelesi() {
             ← Vissza a gumiszerviz főoldalára
           </Link>
           <a
-            href="/pdfs/Trinin-Labs-GDPR-nyilatkozat.pdf"
+            href="/pdfs/FT Gumiszerviz GDPR nyilatkozat.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="bg-[#f22323] hover:bg-[F37777] text-[#121212] px-4 py-2 rounded-lg font-semibold transition-colors duration-300"
@@ -27,7 +27,7 @@ export default function Adatkezelesi() {
         </h1>
         <div className="h-1 w-20 bg-gradient-to-r from-[#f22323] to-[] mb-4"></div>
         <p className="text-[#8a8a8a] text-sm mb-12">
-          Frissítve: 2026. 02. 01.[cite: 3]
+          Frissítve: 2026. 05. 04.
         </p>
 
         <div className="space-y-8 text-[#d0d0d0]">

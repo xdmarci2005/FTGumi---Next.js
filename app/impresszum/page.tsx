@@ -75,7 +75,11 @@ export default function Impresszum() {
             <div className="bg-[#1a1a1a] rounded-lg p-6 border border-[#2a2a2a]">
               <p>
                 <span className="text-[#f5f5f5] font-semibold">Név:</span>{" "}
-                Amazon Web Services
+                  Vercel Inc.
+              </p>
+              <p>
+                <span className="text-[#f5f5f5] font-semibold">Cím:</span>{" "}
+                   440 N Barranca Ave, Covina, CA 91723, Egyesült Államok
               </p>
             </div>
           </div>
