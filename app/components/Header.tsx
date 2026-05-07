@@ -10,7 +10,6 @@ export default function Header() {
                     <Image
                       src="/siteImages/ft-pajzs.png"
                       alt="Logo"
-                      className="w-[100px]"
                       width={100}
                       height={100}
                     />

@@ -17,6 +17,22 @@ const roboto = Roboto({
 export const metadata: Metadata = {
   title: "FT Gumiszerviz Kft.",
   description: "Minden egy helyen az autójának! Új gumiabroncsok, futóműszerviz, olajcsere.",
+  openGraph: {
+    title: 'FT Gumiszerviz Kft.',
+    description: 'Minden egy helyen az autójának! Új gumiabroncsok, futóműszerviz, olajcsere.',
+    url: 'https://www.ftgumi.hu',
+    siteName: 'FT Gumiszerviz',
+    images: [
+      {
+        url: 'https://www.ftgumi.hu/siteImages/opengraph-image.png', // Abszolút URL kell!
+        width: 1200,
+        height: 630,
+        alt: 'Előnézeti kép a weboldalhoz',
+      },
+    ],
+    locale: 'hu_HU',
+    type: 'website',
+  },
 };
 
 export default function RootLayout({

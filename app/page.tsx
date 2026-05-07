@@ -1,34 +1,34 @@
-"use client";
+
 
 //COMPONENTS
 import Prices from "./components/Prices";
 import Services from "./components/Services";
 import Header from "./components/Header";
-import Hero from "./components/Hero";
+import Hero from "./components/hero/Hero";
 import Connections from "./components/Connections";
 import Footer from "./components/Footer";
 
-export default function Home() {
+export default async function Home() {
+
   return (
     <div className="w-full overflow-hidden text-[#f5f5f5] bg-[#121212]">
       {/* HEADER */}
-      {Header()}
+      <Header />
 
       {/* HERO SECTION */}
-      {Hero()}
+      <Hero />
 
       {/* Services */}
-      {Services()}
+      <Services />
 
-       {/* Prices */}
-      {Prices()}
+      {/* Prices */}
+      <Prices />
 
       {/* Connections */}
-      {Connections()}
+      <Connections />
 
       {/* FOOTER */}
-      {Footer()}
-
+      <Footer />
     </div>
   );
 }

@@ -1,20 +1,23 @@
+"use client";
+
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
+const slides = Array.from({ length: 23 }, (_, index) => ({
+  id: index + 1,
+  url: `/siteImages/slides/slide%20(${index + 1}).jpg`,
+}));
+
 export default function Hero() {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const slides = [
-    "/siteImages/slide1.jpg",
-    "/siteImages/slide2.jpg",
-    "/siteImages/slide3.jpg",
-  ];
 
   useEffect(() => {
-      const timer = setInterval(() => {
-        setCurrentSlide((prev) => (prev + 1) % slides.length);
-      }, 5000);
-      return () => clearInterval(timer);
-    }, [slides.length]);
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 5000);
+
+    return () => clearInterval(timer);
+  }, []);
 
   return (
     <div className="">
@@ -24,13 +27,13 @@ export default function Hero() {
       >
         {/* Slideshow */}
         <div className="absolute top-0 left-0 w-full h-full z-0">
-          {slides.map((bg: any, index: any) => (
+          {slides.map((bg, index) => (
             <div
-              key={index}
+              key={bg.id}
               className={`absolute top-0 left-0 w-full h-full bg-cover bg-center transition-opacity duration-[1500ms] ease-in-out ${
                 index === currentSlide ? "opacity-100" : "opacity-0"
               }`}
-              style={{ backgroundImage: `url('${bg}')` }}
+              style={{ backgroundImage: `url('${bg.url}')` }}
             />
           ))}
           {/* Overlay */}

@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabase";
 
@@ -15,7 +17,6 @@ export default function Prices() {
       if (error) {
         console.error("Error fetching price data:", error);
       } else {
-        console.log("Fetched price data:", data);
         setPriceData(data || []);
       }
     };
@@ -32,7 +33,6 @@ export default function Prices() {
       if (error) {
         console.error("Error fetching special prices:", error);
       } else {
-        console.log("Fetched special prices:", data);
         setSpecialPrices(data || []);
       }
     };
