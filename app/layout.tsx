@@ -1,38 +1,20 @@
 import type { Metadata } from "next";
-import { Montserrat, Roboto } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
-const montserrat = Montserrat({
+const geistSans = Geist({
+  variable: "--font-geist-sans",
   subsets: ["latin"],
-  weight: ["400", "600", "800"],
-  variable: "--font-montserrat",
 });
 
-const roboto = Roboto({
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
   subsets: ["latin"],
-  weight: ["300", "400", "700"],
-  variable: "--font-roboto",
 });
 
 export const metadata: Metadata = {
-  title: "FT Gumiszerviz Kft.",
-  description: "Minden egy helyen az autójának! Új gumiabroncsok, futóműszerviz, olajcsere.",
-  openGraph: {
-    title: 'FT Gumiszerviz Kft.',
-    description: 'Minden egy helyen az autójának! Új gumiabroncsok, futóműszerviz, olajcsere.',
-    url: 'https://www.ftgumi.hu',
-    siteName: 'FT Gumiszerviz',
-    images: [
-      {
-        url: 'https://www.ftgumi.hu/siteImages/opengraph-image.png', // Abszolút URL kell!
-        width: 1200,
-        height: 630,
-        alt: 'Előnézeti kép a weboldalhoz',
-      },
-    ],
-    locale: 'hu_HU',
-    type: 'website',
-  },
+  title: "FT Gumiszerviz - Minőségi gumiabroncsok és szervizelés Budapesten",
+  description: "FT Gumiszerviz - Minőségi gumiabroncsok és szervizelés Budapesten. Széles választék, gyors kiszolgálás, szakértői tanácsadás. Látogasson el hozzánk még ma!",
 };
 
 export default function RootLayout({
@@ -41,12 +23,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="hu" className="scroll-smooth">
-      <body
-        className={`${roboto.variable} ${montserrat.variable} font-sans bg-[#121212] text-[#f5f5f5] antialiased m-0 p-0`}
-      >
-        {children}
-      </body>
+    <html
+      lang="hu"
+      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+    >
+      <body className="min-h-full flex flex-col">{children}</body>
     </html>
   );
 }
