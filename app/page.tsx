@@ -45,7 +45,7 @@ const schemaData = {
       "@type": "OpeningHoursSpecification",
       dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
       opens: "08:00",
-      closes: "17:00",
+      closes: "16:30",
     },
   ],
   priceRange: "$$",
