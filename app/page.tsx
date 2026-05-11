@@ -1,10 +1,10 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Link from "next/link";
 import {
   Phone,
   MapPin,
-  Snowflake,
   Droplet,
   CarFront,
   Wrench,
@@ -154,10 +154,10 @@ const additionalServices = [
     colSpan: 1,
   },
   {
-    id: "klima",
-    title: "Klímaszerelés",
-    desc: "Klímatöltés, ózonos fertőtlenítés, gombátlanítás és rendszerellenőrzés.",
-    icon: Snowflake,
+    id: "futomu",
+    title: "Fék, futóműjavítás, kisebb elektromos javítások",
+    desc: "Teljes körű diagnosztika és javítás a biztonságos közlekedésért. Gyors, szakszerű szolgáltatás.",
+    icon: Settings,
     colSpan: 1,
   },
   {
@@ -177,13 +177,13 @@ const additionalServices = [
   {
     id: "berauto",
     title: "Bérautó Szolgáltatás",
-    desc: "Csereautó biztosítása a hosszabb szervizelés idejére, hogy Ön egyetlen percre se akadjon el a mindennapokban. Tisztán és teletankolva adjuk át.",
+    desc: "Kisebb és nagyobb furgonok bérelhetők cipekedéshez, költözéshez és szállításhoz.",
     icon: CarFront,
     colSpan: 2,
   },
 ];
 
-const sizeOrder = Object.keys(pricingData) as SizeKey[];
+const sizeOrder: SizeKey[] = ["13-14", "15", "16", "17", "18", "19-20"];
 
 const placeholderImages = Array.from({ length: 23 }, (_, idx) => {
   const fileName = `slide (${idx + 1}).jpg`;
@@ -311,7 +311,7 @@ export default function App() {
             <img
               src="/siteImages/ft-full-logo.png"
               alt="FT Gumiszerviz logó"
-              className="mx-auto block h-auto max-w-[720px]"
+              className="mx-auto block h-auto max-w-[720px] w-full"
             />
           </h1>
 
@@ -323,7 +323,7 @@ export default function App() {
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <a
               href="tel:+36204856345"
-              className="group flex items-center justify-center gap-3 bg-red-600 hover:bg-red-500 text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 shadow-[0_0_40px_rgba(220,38,38,0.4)] hover:shadow-[0_0_60px_rgba(220,38,38,0.6)] hover:-translate-y-1"
+              className="group flex md:hidden items-center justify-center gap-3 bg-red-600 hover:bg-red-500 text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 shadow-[0_0_40px_rgba(220,38,38,0.4)] hover:shadow-[0_0_60px_rgba(220,38,38,0.6)] hover:-translate-y-1"
             >
               <Phone className="w-5 h-5 group-hover:rotate-12 transition-transform" />
               Azonnali Hívás
@@ -334,7 +334,7 @@ export default function App() {
               className="group cursor-pointer flex items-center justify-center gap-3 bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/10 text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 hover:-translate-y-1"
             >
               <Calendar className="w-5 h-5 text-slate-300 group-hover:text-white transition-colors" />
-              Foglalj Időpontot
+              Telefonos Időpontfoglalás
             </button>
           </div>
         </div>
@@ -460,7 +460,11 @@ export default function App() {
                     {pricingData[activeSize][serviceType].suffix}
                   </span>
                 </div>
-                <button className="w-full lg:w-auto cursor-pointer bg-red-600 hover:bg-red-500 text-white shadow-[0_0_20px_rgba(220,38,38,0.3)] hover:shadow-[0_0_40px_rgba(220,38,38,0.5)] px-8 py-4 rounded-xl font-bold text-lg transition-all hover:-translate-y-1 flex items-center justify-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => scrollToSection("quick-links")}
+                  className="w-full lg:w-auto cursor-pointer bg-red-600 hover:bg-red-500 text-white shadow-[0_0_20px_rgba(220,38,38,0.3)] hover:shadow-[0_0_40px_rgba(220,38,38,0.5)] px-8 py-4 rounded-xl font-bold text-lg transition-all hover:-translate-y-1 flex items-center justify-center gap-2"
+                >
                   Időpontot Kérek <ChevronRight className="w-5 h-5" />
                 </button>
               </div>
@@ -475,17 +479,17 @@ export default function App() {
           <div className="mb-16 md:flex md:items-end justify-between gap-8">
             <div className="max-w-2xl">
               <h2 className="text-4xl md:text-5xl font-extrabold mb-6 text-white tracking-tight">
-                Komplex <span className="text-red-500">Szerviz</span> Hálózat
+                Szolgáltatások
               </h2>
               <p className="text-xl text-slate-400 font-light">
-                A gumiszerelésen túl teljes körű autóipari szolgáltatásokkal
-                várjuk. Mindenre kiterjedő gondoskodás gépjárműve számára
-                egyetlen helyen.
+                Gumiszerelés, olajcsere, futóműjavítás és még sok más
+                szolgáltatás egy helyen. Nálunk nem csak a gumikat, hanem az
+                autó alapszintű egészét is karbantartjuk!
               </p>
             </div>
             <div className="hidden md:flex items-center gap-4 text-slate-400 font-medium">
               <div className="flex flex-col items-end">
-                <span className="text-white text-2xl font-bold">4.9/5</span>
+                <span className="text-white text-2xl font-bold">4.8/5</span>
                 <span className="text-sm flex items-center gap-1">
                   <Star className="w-4 h-4 text-amber-400 fill-amber-400" />{" "}
                   Google Értékelés
@@ -518,13 +522,6 @@ export default function App() {
                   <p className="text-slate-400 mb-8 font-light text-lg leading-relaxed flex-grow">
                     {service.desc}
                   </p>
-                  <a
-                    href="#"
-                    className="inline-flex items-center gap-2 text-white font-semibold group-hover:text-red-400 transition-all w-max after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-full after:h-0.5 after:bg-red-500 after:scale-x-0 group-hover:after:scale-x-100 after:origin-left after:transition-transform"
-                  >
-                    Részletek megtekintése{" "}
-                    <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                  </a>
                 </div>
               </div>
             ))}
@@ -614,9 +611,20 @@ export default function App() {
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-red-400 transition-colors">
+                <Link
+                  href="/adatkezelesi-tajekoztato"
+                  className="hover:text-red-400 transition-colors"
+                >
                   Adatvédelmi tájékoztató
-                </a>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/impresszum"
+                  className="hover:text-red-400 transition-colors"
+                >
+                  Impresszum
+                </Link>
               </li>
             </ul>
           </div>
