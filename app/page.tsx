@@ -45,7 +45,7 @@ const schemaData = {
       "@type": "OpeningHoursSpecification",
       dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
       opens: "08:00",
-      closes: "17:00",
+      closes: "16:30",
     },
   ],
   priceRange: "$$",
@@ -303,7 +303,7 @@ export default function App() {
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-8">
             <span className="flex w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
             <span className="text-sm font-medium text-slate-300">
-              Hétköznap nyitva • 08:00 - 17:00
+              Hétköznap nyitva • 08:00 - 16:30
             </span>
           </div>
 
