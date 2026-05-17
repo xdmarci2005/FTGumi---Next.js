@@ -574,7 +574,7 @@ export default function App() {
                 <Clock className="w-5 h-5 text-red-500 shrink-0 mt-0.5" />
                 <div>
                   <div className="text-white font-medium">Hétfő - Péntek</div>
-                  <div>08:00 - 17:00</div>
+                  <div>08:00 - 16:30</div>
                   <div className="mt-1 text-slate-500 text-sm">
                     Hétvégén: Zárva
                   </div>
