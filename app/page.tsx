@@ -17,6 +17,12 @@ import {
   Disc,
   Settings,
 } from "lucide-react";
+import {
+  pricingData,
+  sizeOrder,
+  type SizeKey,
+  type ServiceKey,
+} from "./pricing-data";
 
 const BUSINESS_NAME = "FT Gumiszerviz";
 const BUSINESS_PHONE = "+36 20 485 6345";
@@ -56,76 +62,6 @@ const schemaData = {
   },
 };
 
-// A kibővített árazási adatmodell, amely tartalmazza mindkét szolgáltatástípus árait és tulajdonságait
-const pricingData = {
-  "13-14": {
-    title: '13" - 14" Méret',
-    tireSwap: {
-      price: "19 000 Ft",
-      suffix: "/ szett",
-    },
-    wheelSwap: {
-      price: "10 000 Ft",
-      suffix: "/ szett",
-    },
-  },
-  "15": {
-    title: '15" Méret',
-    tireSwap: {
-      price: "21 000 Ft",
-      suffix: "/ szett",
-    },
-    wheelSwap: {
-      price: "10 500 Ft",
-      suffix: "/ szett",
-    },
-  },
-  "16": {
-    title: '16" Méret',
-    tireSwap: {
-      price: "23 200 Ft",
-      suffix: "/ szett",
-    },
-    wheelSwap: {
-      price: "12 600 Ft",
-      suffix: "/ szett",
-    },
-  },
-  "17": {
-    title: '17" Méret',
-    tireSwap: {
-      price: "25 300 Ft",
-      suffix: "/ szett",
-    },
-    wheelSwap: {
-      price: "14 700 Ft",
-      suffix: "/ szett",
-    },
-  },
-  "18": {
-    title: '18" Méret',
-    tireSwap: {
-      price: "27 400 Ft",
-      suffix: "/ szett",
-    },
-    wheelSwap: {
-      price: "16 900 Ft",
-      suffix: "/ szett",
-    },
-  },
-  "19-20": {
-    title: '19" - 20" Méret',
-    tireSwap: {
-      price: "29 600 Ft",
-      suffix: "/ szett",
-    },
-    wheelSwap: {
-      price: "19 000 Ft",
-      suffix: "/ szett",
-    },
-  },
-} as const;
-
 const serviceFeatures = {
   tireSwap: [
     "Abroncsok le- és felszerelése",
@@ -140,10 +76,6 @@ const serviceFeatures = {
     "Guminyomás beállítása",
   ],
 } as const;
-
-type PricingData = typeof pricingData;
-type SizeKey = keyof PricingData;
-type ServiceKey = "tireSwap" | "wheelSwap";
 
 const additionalServices = [
   {
@@ -182,8 +114,6 @@ const additionalServices = [
     colSpan: 2,
   },
 ];
-
-const sizeOrder: SizeKey[] = ["13-14", "15", "16", "17", "18", "19-20"];
 
 const placeholderImages = Array.from({ length: 23 }, (_, idx) => {
   const fileName = `slide (${idx + 1}).jpg`;
@@ -591,7 +521,7 @@ export default function App() {
             <ul className="space-y-3 text-slate-400 font-light">
               <li>
                 <a
-                  href="#arak"
+                  href="/arak"
                   className="hover:text-red-400 transition-colors"
                 >
                   Árlista & Csomagok
