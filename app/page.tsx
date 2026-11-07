@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import {
   Phone,
   MapPin,
@@ -9,6 +10,7 @@ import {
   CarFront,
   Wrench,
   Archive,
+  ChevronLeft,
   ChevronRight,
   CheckCircle2,
   Calendar,
@@ -16,6 +18,7 @@ import {
   Clock,
   Disc,
   Settings,
+  Mail,
 } from "lucide-react";
 import {
   pricingData,
@@ -26,6 +29,7 @@ import {
 
 const BUSINESS_NAME = "FT Gumiszerviz";
 const BUSINESS_PHONE = "+36 20 485 6345";
+const BUSINESS_EMAIL = "ftgumi@gmail.com";
 const BUSINESS_ADDRESS = "1117 Budapest, Kondorosi út 2/A";
 
 // Kiterjesztett Structured Data a Local SEO dominanciához (2026-os sztenderd)
@@ -34,6 +38,7 @@ const schemaData = {
   "@type": ["TireShop", "AutoRepair"],
   name: BUSINESS_NAME,
   telephone: BUSINESS_PHONE,
+  email: BUSINESS_EMAIL,
   address: {
     "@type": "PostalAddress",
     streetAddress: "Kondorosi út 2/A",
@@ -170,10 +175,14 @@ export default function App() {
       >
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
           <div className="flex items-center gap-3 cursor-pointer group">
-            <div className="w-12 h-12 bg-gradient-to-br from-red-500 to-red-700 rounded-2xl flex items-center justify-center shadow-lg shadow-red-600/20 group-hover:shadow-red-600/40 transition-all duration-300">
-              <span className="text-white font-black text-2xl tracking-tighter">
-                FT
-              </span>
+            <div className="w-12 h-12 flex items-center justify-center drop-shadow-lg group-hover:drop-shadow-[0_0_12px_rgba(220,38,38,0.4)] transition-all duration-300">
+              <Image
+                src="/siteImages/ft-pajzs.png"
+                alt="FT"
+                width={48}
+                height={48}
+                className="w-full h-full object-contain"
+              />
             </div>
             <span className="text-2xl font-bold tracking-tight text-white group-hover:text-red-400 transition-colors">
               {BUSINESS_NAME}
@@ -228,6 +237,30 @@ export default function App() {
             <div className="absolute inset-0 bg-gradient-to-r from-[#0a0f1a]/80 via-transparent to-[#0a0f1a]/40"></div>
           </div>
         ))}
+
+        <button
+          type="button"
+          aria-label="Előző hero kép"
+          onClick={() =>
+            setCurrentSlide(
+              (currentSlide - 1 + placeholderImages.length) %
+                placeholderImages.length,
+            )
+          }
+          className="absolute left-4 top-1/2 z-20 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-white/50 bg-transparent text-white transition-colors hover:border-white hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/70 md:left-8 md:h-16 md:w-16"
+        >
+          <ChevronLeft className="h-7 w-7 md:h-9 md:w-9" />
+        </button>
+        <button
+          type="button"
+          aria-label="Következő hero kép"
+          onClick={() =>
+            setCurrentSlide((currentSlide + 1) % placeholderImages.length)
+          }
+          className="absolute right-4 top-1/2 z-20 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-white/50 bg-transparent text-white transition-colors hover:border-white hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/70 md:right-8 md:h-16 md:w-16"
+        >
+          <ChevronRight className="h-7 w-7 md:h-9 md:w-9" />
+        </button>
 
         <div className="relative z-10 max-w-5xl mx-auto text-center w-full mt-20 md:mt-0">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-8">
@@ -465,8 +498,14 @@ export default function App() {
           {/* Brand Info */}
           <div>
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 bg-red-600 rounded-xl flex items-center justify-center">
-                <span className="text-white font-black text-lg">FT</span>
+              <div className="w-10 h-10 flex items-center justify-center">
+                <Image
+                  src="/siteImages/ft-pajzs.png"
+                  alt="FT"
+                  width={40}
+                  height={40}
+                  className="w-full h-full object-contain"
+                />
               </div>
               <span className="text-xl font-bold text-white tracking-tight">
                 {BUSINESS_NAME}
@@ -499,6 +538,13 @@ export default function App() {
               >
                 <Phone className="w-5 h-5 text-red-500 shrink-0" />
                 <span>{BUSINESS_PHONE}</span>
+              </a>
+              <a
+                href={`mailto:${BUSINESS_EMAIL}`}
+                className="flex items-center gap-3 hover:text-white transition-colors"
+              >
+                <Mail className="w-5 h-5 text-red-500 shrink-0" />
+                <span>{BUSINESS_EMAIL}</span>
               </a>
               <div className="flex items-start gap-3">
                 <Clock className="w-5 h-5 text-red-500 shrink-0 mt-0.5" />
